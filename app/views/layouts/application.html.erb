@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>TsundokuWhatcher</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      .top-space{
+        height: 70px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+<%# 以下ナビバー %>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">積読WATCHER</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">目標管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ジャンル一覧</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ジャンル追加</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ユーザー</a>
+      </li>
+      <%# if文による条件分岐で表示を変更 %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ログイン</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ログアウト</a>
+      </li>
+      <%# if文による条件分岐で表示を変更 %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="検索" aria-label="検索">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+    </form>
+  </div>
+</nav>
+<div class="top-space"></div>
+</header>
+<%# ここまでナビバー %>
+
+    <%= yield %>
+  </body>
+</html>
