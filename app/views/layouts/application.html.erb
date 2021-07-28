@@ -29,7 +29,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+<%# if文による条件分岐で表示を変更 %>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -44,20 +44,19 @@
       <li class="nav-item">
         <a class="nav-link" href="#">ユーザー</a>
       </li>
-      <%# if文による条件分岐で表示を変更 %>
       <li class="nav-item">
-        <a class="nav-link" href="#">ログイン</a>
+        <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">ログアウト</a>
       </li>
-      <%# if文による条件分岐で表示を変更 %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="検索" aria-label="検索">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
     </form>
   </div>
+<%# if文による条件分岐で表示を変更 %>
 </nav>
 <div class="top-space"></div>
 </header>
