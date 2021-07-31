@@ -1,49 +1,27 @@
 <div class="container">
-  <div class="row" name="user-info">
-    <div class="col-lg-3 col-sm-12">
-      <p>ようこそユーザーさん</p>
+  <div class="row" >
+    <div class="col h5">
+    <%= "#{@user.nickname}さんの学習ジャンル" %>
     </div>
-    <div class="col-lg-9 col-sm-12">
-      <p>今日も目標〇〇に向かって行動を積み上げていきましょう！</p>
-    </div>
-  </div>
-  <div class="row">
-  </div>
-  <div class="row my-2 py-2 border border-success">
-    <div class="col-12">
-      <h3 class="text-center">積み上げ一覧</h3>
-    </div>
-    <div class="col-lg-4 col-sm-12">
-      <h5>総合記事：作成記事数は〇〇件！</h5>
-    </div>
-    <div class="col-lg-4 col-sm-12">
-      <h5>ジャンル：ジャンルは〇〇件！</h5>
-    </div>
-    <div class="col-lg-4 col-sm-12">
-      <h5>達成目標：達成目標数は〇〇件！</h5>
-    </div>
-  </div>
-  <div class="row my-auto">
-    <div class="col-12">
-      <h3 class="text-center">学習ジャンル一覧</h3>
-    </div>
-    <div class="col-lg col-sm-12 m-2 border border-secondary">
-      <h5>ジャンル１</h5>
-      <p>ジャンルの情報</p>
-      <p>記事の数は〇〇</p>
-      <p>ジャンル１へのリンク</p>
-    </div>
-    <div class="col-lg col-sm-12 m-2 border border-secondary">
-      <h5>ジャンル２</h5>
-      <p>ジャンルの情報</p>
-      <p>記事の数は〇〇</p>
-      <p>ジャンル２へのリンク</p>
-    </div>
-    <div class="col-lg col-sm-12 m-2 border border-secondary">
-      <h5>ジャンル３</h5>
-      <p>ジャンルの情報</p>
-      <p>記事の数は〇〇</p>
-      <p>ジャンル３へのリンク</p>
-    </div>
-  </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ジャンル</th>
+          <th scope="col">内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>ジャンル名１</td>
+          <td>ジャンルの説明１</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>ジャンル名２</td>
+          <td>ジャンルの説明２</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
