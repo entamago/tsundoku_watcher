@@ -1,0 +1,31 @@
+<div class="card col-sm-5 mx-auto mt-5">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3">ユーザー情報の編集</h3>
+    <p class="small form-text">編集内容を記述してください</p>
+    <%= form_with model: @user, local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <%= f.label :nickname, "ニックネーム", :class => "form-label" %><em>（10文字以内）</em> <br />
+        <%= f.text_field :nickname, autofocus: true, :class => "form-controll col-8" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス", :class => "form-label" %><br />
+        <%= f.email_field :email, :class => "form-controll col-8" %>
+      </div>
+
+      <p class="small form-text" >長期目標の見直しがあればアップデートしていきましょう</p>
+      <div class="form-group">
+        <%= f.label :purpose, "目標・目的", :class => "form-label" %><em>（30文字以内）</em> <br />
+        <%= f.text_field :purpose, autofocus: true, :class => "form-controll col-8" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "編集完了", :class => "btn btn-success btn-block" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

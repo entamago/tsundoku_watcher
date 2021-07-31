@@ -25,7 +25,7 @@
 <%# 以下ナビバー %>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">積読WATCHER</a>
+  <%= link_to "積読WATCHER", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,13 +37,13 @@
         <a class="nav-link" href="#">目標管理</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ジャンル一覧</a>
+        <%= link_to "ジャンル一覧", genres_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ジャンル追加</a>
+        <%= link_to "ジャンル追加", new_genre_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ユーザー情報</a>
+        <%= link_to "ユーザー編集", edit_user_path(@user.id), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>

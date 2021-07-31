@@ -5,12 +5,12 @@
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <div class="form-group ">
         <%= f.label :email, "メールアドレス", :class => "form-label" %><br />
-        <%= f.email_field :email, autofocus: true, :class => "form-controll" %>
+        <%= f.email_field :email, autofocus: true, :class => "form-controll col-8" %>
       </div>
 
       <div class="form-group">
         <%= f.label :password, "パスワード", :class => "form-label" %><br />
-        <%= f.password_field :password, autocomplete: "off", :class => "form-controll" %>
+        <%= f.password_field :password, autocomplete: "off", :class => "form-controll col-8" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
