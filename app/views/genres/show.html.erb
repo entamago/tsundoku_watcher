@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row" >
+    <div class="col h5">
+    <i class="fa fa-book" aria-hidden="true"></i><%= "　#{@genre.genre}に関する記事" %>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">タイトル</th>
+          <th scope="col">記事</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">0</th>
+            <td>記事のタイトル</td>
+            <td>記事の内容</td>
+          </tr>
+      </tbody>
+    </table>
+    <div class="col-12">
+    <%= link_to "ジャンル一覧へ戻る", genres_path, class: "text-reset" %>
+    </div>
+</div>
