@@ -16,6 +16,7 @@
       .top-space{
         height: 70px;
       }
+
     </style>
 
   </head>
@@ -46,7 +47,9 @@
         <%= link_to "ユーザー編集", edit_user_path(@user.id), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete,data: {
+          confirm: "ログアウトしてもよろしいですか？"
+        }, class: "nav-link" %>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

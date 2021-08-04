@@ -1,6 +1,6 @@
 <div class="card col-sm-5 mx-auto mt-5">
   <div class="card-body">
-    <h3 class="mt-1 mb-3">ジャンルを追加する</h3>
+    <h3 class="mt-1 mb-3">ジャンル情報の編集</h3>
     <%= form_with model: @genre, local: true do |f| %>
 
       <%= render 'shared/error_messages', model: f.object %>
@@ -16,9 +16,15 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "追加", :class => "btn btn-success btn-block" %>
+        <%= f.submit "更新", :class => "btn btn-success btn-block" %>
       </div>
       
+      <div class="actions mt-4">
+        <%= link_to "削除", genre_path(@genre.id), method: :delete, data: {
+          confirm: "関連記事も含めて削除されますが、本当に削除しますか？"
+        }, :class => "btn btn-outline-danger" %>
+      </div>
+
     <% end %>
   </div>
 </div>

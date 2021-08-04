@@ -1,27 +1,28 @@
 <div class="container">
   <div class="row" >
     <div class="col h5">
-    <%= "#{@user.nickname}さんの学習ジャンル" %>
+      <i class="fa fa-book" aria-hidden="true"></i><%= "　#{@user.nickname}さんの学習ジャンル" %>
     </div>
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">＃</th>
           <th scope="col">ジャンル</th>
           <th scope="col">内容</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>ジャンル名１</td>
-          <td>ジャンルの説明１</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>ジャンル名２</td>
-          <td>ジャンルの説明２</td>
-        </tr>
+        <% @genres.each_with_index do |genre, i| %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= link_to genre.genre, genre_path(genre.id), class: "btn btn-outline-dark btn-block" %></td>
+            <td><%= genre.genre_info %><%= link_to "[編集]", edit_genre_path(genre.id), class: "text-reset" %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
+    <div class="col-12">
+      <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %></p>
+    </div>
+  </div>
 </div>
