@@ -1,0 +1,35 @@
+<div class="card col-sm-5 mx-auto mt-5">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3"><%= @genre.genre %>の新しい記事</h3>
+    <%= form_with model: [@genre, @article], local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <%= f.label :title, "タイトル",:class => "form-label" %><em>（20文字以内）</em> <br />
+        <%= f.text_field :title, placeholder: "記事のタイトル", maxlength: "20", :class => "form-controll col-12" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :article, "記事本文", :class => "form-label" %><em>（200文字以内）</em> <br />
+        <%= f.text_area :article, placeholder: "記事の内容は小学生に説明するつもりで要約・言語化してみましょう", rows: "6", maxlength: "200", :class => "form-controll col-12" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :reference_info, "備考・参考欄", :class => "form-label" %><br />
+        <%= f.text_area :reference_info, placeholder: "【任意】参考URLなど", rows: "2", :class => "form-controll col-12" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "追加", :class => "btn btn-success btn-block" %>
+      </div>
+
+      <div class="actions mt-4">
+        <%= link_to "記事一覧に戻る", genre_path(@genre.id), data: {
+          confirm: "記事を追加せずに戻りますか？"
+        }, :class => "btn btn-outline-secondary" %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class GenresController < ApplicationController
   before_action :set_user
 
   def index
-    @genres = Genre.all
+    @genres = Genre.where(user_id: @user.id)
   end
 
   def new
@@ -43,6 +43,7 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
+    @articles = Article.where(genre_id: @genre.id)
   end
 
   private
