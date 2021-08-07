@@ -2,10 +2,10 @@
   <div class="card-body">
     <p>ジャンル：<%= @article.genre.genre %></p>
     <h3 class="mt-1 mb-3"><%= @article.title %></h3>
-    <h4 > 記事の内容 </h4>
-    <p><%= @article.article %></p>
-    <h4>参考・備考</h4>
-    <p><%= @article.reference_info %></p>
+    <h5 > [記事の内容] </h5>
+    <p class="lead"><%= @article.article %></p>
+    <h5>[参考・備考]</h5>
+    <p><%= text_url_to_link(h(@article.reference_info)).html_safe %></p>
     <p>作成者：<%= @article.user.nickname %></p>
 
     <div class="actions mt-4">
@@ -15,6 +15,6 @@
   </div>
 </div>
 <div class="mt-3 col-12">
-  <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %> 
+  <p class="text-center"><%= link_to "Topへ", root_path, :class => "text-reset" %> 
   | <%= link_to "#{@article.genre.genre}へ", genre_path(@article.genre), class: "text-reset" %></p>
 </div>
