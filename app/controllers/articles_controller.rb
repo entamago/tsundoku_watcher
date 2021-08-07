@@ -16,6 +16,33 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:genre_id])
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to genre_article_path(genre_id: params[:genre_id], id: params[:id])
+    else
+      render :edit
+    end 
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    if @article.destroy
+      redirect_to genre_path(@article.genre)
+    else
+      render :edit
+    end
+  end
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
   private
   def set_user
     @user = current_user
