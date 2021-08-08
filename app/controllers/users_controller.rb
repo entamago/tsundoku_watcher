@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user
+    @articles = Article.where(user_id: @user.id).order(id: :DESC)
+    @genres = Genre.where(user_id: @user.id)
   end
 
   private

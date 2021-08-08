@@ -20,7 +20,7 @@
           <tr>
             <th scope="row"><%= i + 1 %></th>
             <td><%= link_to article.title, genre_article_path(genre_id: article.genre_id, id: article.id), class: "btn btn-outline-dark btn-block" %></td>
-            <td><%= article.article %></td>
+            <td><%= article.article.truncate(50) %></td>
           </tr>
         <% end %>
       </tbody>

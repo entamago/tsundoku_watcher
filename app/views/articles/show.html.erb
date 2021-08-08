@@ -4,12 +4,17 @@
     <h3 class="mt-1 mb-3"><%= @article.title %></h3>
     <h5 > [記事の内容] </h5>
     <p class="lead"><%= @article.article %></p>
-    <h5>[参考・備考]</h5>
-    <p><%= text_url_to_link(h(@article.reference_info)).html_safe %></p>
+    <% unless @article.reference_info.blank? %>
+      <h5>[参考・備考]</h5>
+      <p><%= text_url_to_link(h(@article.reference_info)).html_safe %></p>
+    <% end %>
     <p>作成者：<%= @article.user.nickname %></p>
 
-    <div class="actions mt-4">
-        <%= link_to "編集", edit_genre_article_path(genre_id: @article.genre_id, id: @article.id), :class => "btn btn-outline-secondary" %>
+    <div class="actions mt-4 d-flex justify-content-around">
+      <%= link_to "削除", genre_article_path(@article.id), method: :delete, data: {
+        confirm: "本当に削除しますか？"
+      }, :class => "btn btn-outline-danger mr-5" %>
+      <%= link_to "編集", edit_genre_article_path(genre_id: @article.genre_id, id: @article.id), :class => "btn btn-outline-secondary" %>
     </div>
 
   </div>

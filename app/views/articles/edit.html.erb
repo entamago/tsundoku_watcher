@@ -24,12 +24,6 @@
         <%= f.submit "編集完了", :class => "btn btn-success btn-block" %>
       </div>
 
-      <div class="actions mt-4">
-        <%= link_to "削除", genre_article_path(@article.id), method: :delete, data: {
-          confirm: "本当に削除しますか？"
-        }, :class => "btn btn-outline-danger" %>
-      </div>
-      
     <% end %>
   </div>
 </div>
