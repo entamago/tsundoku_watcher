@@ -1,6 +1,6 @@
 class Genre < ApplicationRecord
   belongs_to :user
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   with_options presence: true do
     validates :genre
