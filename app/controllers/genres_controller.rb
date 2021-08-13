@@ -43,6 +43,7 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
+    @articles = @genre.articles.page(params[:page]).per(10)
   end
 
   private

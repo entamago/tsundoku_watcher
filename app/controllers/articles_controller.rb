@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(params[:keyword]).where(user_id: @user.id)
+    @articles = Article.search(params[:keyword]).where(user_id: @user.id).page(params[:page]).per(12)
     @keyword = params[:keyword]
     render "search"
   end

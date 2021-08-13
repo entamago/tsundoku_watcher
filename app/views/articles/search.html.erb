@@ -42,6 +42,10 @@
     <% end %>
   <% end %>
 
+  <div class="col-12 d-flex justify-content-center">
+    <%= paginate @articles %>
+  </div>
+
   <div class="col-12 mt-3">
     <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %> | <%= link_to "ジャンル一覧へ", genres_path, class: "text-reset" %></p>
   </div>

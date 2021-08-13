@@ -9,6 +9,10 @@
       <p><%= text_url_to_link(h(@article.reference_info)).html_safe %></p>
     <% end %>
     <p>作成者：<%= @article.user.nickname %></p>
+    <p>作成日時：<%= l @article.created_at %></p>
+    <% if @article.created_at != @article.updated_at %>
+    <p>最終更新日：<%= l @article.updated_at %></p>
+    <% end %>
 
     <div class="actions mt-4 d-flex justify-content-around">
       <%= link_to "削除", genre_article_path(@article.id), method: :delete, data: {
