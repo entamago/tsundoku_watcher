@@ -1,12 +1,10 @@
 <div class="container">
-  <div class="row" name="user-info">
+  <div class="row mx-3" name="user-info">
     <div class="col-lg-3 col-sm-12">
-      <%= "ようこそ#{current_user.nickname}さん"%>
+      <h5><%= "ようこそ#{current_user.nickname}さん"%></h5>
     </div>
   </div>
-  <div class="row">
-  </div>
-  <div class="row my-2 py-2 border border-danger">
+  <div class="row m-3 py-2 border border-danger">
     <div class="col-12">
       <h3 class="text-center"><span class="badge badge-danger">Fight!</span> 積み上げ一覧</h3>
     </div>
@@ -14,10 +12,10 @@
       <p class="lead text-lg-center">今日も<span class="text-danger"><%= current_user.purpose %></span>という目標に向かって行動を積み上げていきましょう!</p>
     </div>
     <div class="col-lg-6 col-sm-12 text-center">
-      <h4><%= "総合記事：作成記事数は#{ @articles.count }件！"%></h4>
+      <h4>総合作成記事数は<span class="text-danger"><%= @articles.count %></span>件！</h4>
     </div>
     <div class="col-lg-6 col-sm-12 text-center">
-      <h4><%= "ジャンル：ジャンルは#{ @genres.count }件！" %></h4>
+      <h4>作成ジャンルは<span class="text-danger"><%= @genres.count %></span>件！</h4>
     </div>
   </div>
 
