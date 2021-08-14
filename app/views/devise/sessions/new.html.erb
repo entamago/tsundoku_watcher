@@ -3,6 +3,7 @@
 
     <h3 class="mt-1 mb-3">ログイン</h3>
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+
       <div class="form-group ">
         <%= f.label :email, "メールアドレス", :class => "form-label" %><br />
         <%= f.email_field :email, autofocus: true, :class => "form-controll col-8" %>
