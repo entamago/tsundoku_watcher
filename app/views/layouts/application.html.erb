@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>TsundokuWhatcher</title>
+    <title>TsundokuWatcher</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,6 +17,28 @@
         height: 70px;
       }
 
+      .pagination>li>a {
+        border: none;
+        color: #28a745;
+      }
+      
+      .pagination>.active>a {
+        background: #d4edda !important;
+        color: #28a745;
+        border-radius: 5px;
+      }
+
+      .pagination>.active>a:hover {
+        background: #d4edda;
+        color: white;
+        border-radius: 5px;
+      }
+
+      .pagination>li>a:hover {
+        background: #28a745;
+        color: white;
+        border-radius: 5px;
+      }
     </style>
 
   </head>
@@ -35,27 +57,32 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">目標管理</a>
+        <%= link_to genres_path, class: "nav-link" do %>
+          <i class="fa fa-book" aria-hidden="true"></i> ジャンル一覧
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "ジャンル一覧", genres_path, class: "nav-link" %>
+        <%= link_to new_genre_path, class: "nav-link" do %>
+          <i class="fas fa-book-medical" aria-hidden="true"></i> ジャンル追加
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "ジャンル追加", new_genre_path, class: "nav-link" %>
+        <%= link_to edit_user_path(@user.id), class: "nav-link" do %>
+          <i class="fas fa-user-edit" aria-hidden="true"></i> ユーザー編集
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "ユーザー編集", edit_user_path(@user.id), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete,data: {
+        <%= link_to destroy_user_session_path, method: :delete,data: {
           confirm: "ログアウトしてもよろしいですか？"
-        }, class: "nav-link" %>
+        }, class: "nav-link" do %>
+          <i class="fas fa-door-open" aria-hidden="true"></i> ログアウト
+        <% end %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="検索" aria-label="検索">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-    </form>
+    <%= form_with(url: search_path, local: true, method: :get, class: "form-inline my-2 my-lg-0") do |f| %>
+      <%= f.text_field :keyword, placeholder: "記事検索", :class => "form-control mr-sm-2" %>
+      <%= f.submit "検索", :class => "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
   </div>
 <% end %>
 <%# if文による条件分岐で表示を変更 %>

@@ -1,0 +1,33 @@
+<div class="col-sm-5 mx-auto mt-5">
+  <div class="card border-success">
+      <div class="card-header">
+        <p>ジャンル：<%= link_to @article.genre.genre, genre_path(@article.genre), class: "text-reset" %></p>
+        <h3 class="mt-1 mb-3"><%= @article.title %></h3>
+      </div>
+      <div class="card-body">
+        <h5 > [記事の内容] </h5>
+        <p class="lead"><%= safe_join(@article.article.split("\n"),tag(:br)) %></p>
+        <% unless @article.reference_info.blank? %>
+          <h5>[参考・備考]</h5>
+          <p><%= text_url_to_link(h(simple_format(@article.reference_info))).html_safe %></p>
+        <% end %>
+        <p>作成者：<%= @article.user.nickname %></p>
+        <p>作成日時：<%= l @article.created_at %></p>
+        <% if @article.created_at != @article.updated_at %>
+        <p>最終更新日：<%= l @article.updated_at %></p>
+        <% end %>
+
+        <div class="actions mt-4 d-flex justify-content-around">
+          <%= link_to "削除", genre_article_path(@article.id), method: :delete, data: {
+            confirm: "本当に削除しますか？"
+          }, :class => "btn btn-outline-danger mr-5" %>
+          <%= link_to "編集", edit_genre_article_path(genre_id: @article.genre_id, id: @article.id), :class => "btn btn-outline-secondary" %>
+        </div>
+      </div>
+
+  </div>
+<div>
+<div class="mt-3 col-12">
+  <p class="text-center"><%= link_to "Topへ", root_path, :class => "text-reset" %> 
+  | <%= link_to "#{@article.genre.genre}へ", genre_path(@article.genre), class: "text-reset" %></p>
+</div>

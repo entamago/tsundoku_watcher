@@ -1,49 +1,48 @@
 <div class="container">
-  <div class="row" name="user-info">
+  <div class="row mx-3" name="user-info">
     <div class="col-lg-3 col-sm-12">
-      <%= "ようこそ#{current_user.nickname}さん"%>
-    </div>
-    <div class="col-lg-9 col-sm-12">
-      <%= "今日も#{current_user.purpose}という目標に向かって行動を積み上げていきましょう" %>
+      <h5><%= "ようこそ#{current_user.nickname}さん"%></h5>
     </div>
   </div>
-  <div class="row">
-  </div>
-  <div class="row my-2 py-2 border border-success">
+  <div class="row m-3 py-2 border border-danger">
     <div class="col-12">
-      <h3 class="text-center">積み上げ一覧</h3>
+      <h3 class="text-center"><span class="badge badge-danger">Fight!</span> 積み上げ一覧</h3>
     </div>
-    <div class="col-lg-4 col-sm-12">
-      <h5>総合記事：作成記事数は〇〇件！</h5>
+    <div class="col-12">
+      <p class="lead text-lg-center">今日も<span class="text-danger"><%= current_user.purpose %></span>という目標に向かって行動を積み上げていきましょう!</p>
     </div>
-    <div class="col-lg-4 col-sm-12">
-      <h5>ジャンル：ジャンルは〇〇件！</h5>
+    <div class="col-lg-6 col-sm-12 text-center">
+      <h4>総合作成記事数は<span class="text-danger"><%= @articles.count %></span>件！</h4>
     </div>
-    <div class="col-lg-4 col-sm-12">
-      <h5>達成目標：達成目標数は〇〇件！</h5>
+    <div class="col-lg-6 col-sm-12 text-center">
+      <h4>作成ジャンルは<span class="text-danger"><%= @genres.count %></span>件！</h4>
     </div>
   </div>
-  <div class="row my-auto">
+
+  <div class="row mx-auto mt-3">
     <div class="col-12">
-      <h3 class="text-center">学習ジャンル一覧</h3>
+      <h3 class="text-center"><span class="badge badge-success">New</span> 最近の学習記事</h3>
+      <p class="text-center">↓最新記事はこちら↓</p>
     </div>
-    <div class="col-lg col-sm-12 m-2 border border-secondary">
-      <h5>ジャンル１</h5>
-      <p>ジャンルの情報</p>
-      <p>記事の数は〇〇</p>
-      <p>ジャンル１へのリンク</p>
+
+    <% @articles.first(9).each do |article|%>
+    <div class="col-lg-4 col-sm-12 mb-3">
+      <div class="card border-success flex-fillx h-100">
+        <div class="card-header">
+          <h5>ジャンル：<%= link_to article.genre.genre, genre_path(article.genre), class: "text-reset" %></h5>
+          <h3 class="mt-3 mb-3"><%= link_to article.title, genre_article_path(genre_id: article.genre_id, id: article.id), class: "text-reset" %></h3>
+        </div>
+        <div class="card-body">
+          <h5> [記事の内容] </h5>
+          <p class="lead"><%= article.article %></p>
+          <% unless article.reference_info.blank? %>
+            <h5>[参考・備考]</h5>
+            <p><%= text_url_to_link(h(article.reference_info)).html_safe %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="col-lg col-sm-12 m-2 border border-secondary">
-      <h5>ジャンル２</h5>
-      <p>ジャンルの情報</p>
-      <p>記事の数は〇〇</p>
-      <p>ジャンル２へのリンク</p>
-    </div>
-    <div class="col-lg col-sm-12 m-2 border border-secondary">
-      <h5>ジャンル３</h5>
-      <p>ジャンルの情報</p>
-      <p>記事の数は〇〇</p>
-      <p>ジャンル３へのリンク</p>
-    </div>
+    <% end %>
+
   </div>
 </div>
