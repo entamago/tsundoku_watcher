@@ -6,8 +6,18 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
-
-ja:
   time:
     formats:
-      default: "%Y/%m/%d %H:%M:%S"
+      default: "%Y/%m/%d　%H時%M分"
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        purpose: 目的・目標
+      genre:
+        genre: ジャンル
+        genre_info: ジャンルの内容
+      article:
+        title: タイトル
+        article: 記事内容
+        reference_info: 参考・備考
