@@ -3,5 +3,7 @@ FactoryBot.define do
     title           {Faker::Lorem.word}
     article         {Faker::Lorem.sentence}
     reference_info  {Faker::Internet.url}
+    association :user
+    association :genre
   end
 end
