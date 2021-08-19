@@ -1,6 +1,7 @@
 class GenresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  before_action :check_user, only:[:show, :edit, :update, :destroy]
 
   def index
     @genres = Genre.where(user_id: @user.id)
@@ -55,4 +56,8 @@ class GenresController < ApplicationController
     params.require(:genre).permit(:genre, :genre_info).merge(user_id: current_user.id)
   end
 
+  def check_user
+    @genre = Genre.find(params[:id])
+    redirect_to root_path unless @genre.user_id == current_user.id
+  end
 end

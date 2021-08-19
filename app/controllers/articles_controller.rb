@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  before_action :check_user_g, only:[:new, :create, :update]
+  before_action :check_user_a, only:[:edit, :destroy, :show]
 
   def new
     @genre = Genre.find(params[:genre_id])
@@ -57,5 +59,15 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :article, :reference_info).merge(user_id: @user.id, genre_id: params[:genre_id])
+  end
+
+  def check_user_g
+    @genre = Genre.find(params[:genre_id])
+    redirect_to root_path unless @genre.user_id == current_user.id
+  end
+
+  def check_user_a
+    @article = Article.find(params[:id])
+    redirect_to root_path unless @article.user_id == current_user.id
   end
 end
