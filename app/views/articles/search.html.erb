@@ -10,17 +10,21 @@
     <%# 空白で検索ボタンを押した場合のメッセージ分岐 %>
     <% if @keyword == "" %>
       <div class="col-12">
-        <p class="text-center text-success">↓今まで作成した記事はこちら↓</p>
+        <p class="text-center text-success"><span class="bg-white p-1">↓今まで作成した記事はこちら（作成順）↓</span></p>
       </div>
     <% else %>
       <div class="col-12">
-        <h3 class="text-center">『<%= @keyword %>』の検索結果</h3>
+        <h3 class="text-center"><span class="bg-white p-1">『<%= @keyword %>』の検索結果</span></h3>
       </div>
       <div class="col-12">
-        <p class="text-center text-success">↓ヒットした記事はこちら↓</p>
+        <p class="text-center text-success"><span class="bg-white p-1">↓ヒットした記事はこちら↓</span></p>
       </div>
     <% end %>
     <%# メッセージ分岐終了 %>
+
+    <div class="col-12 d-flex justify-content-center">
+      <%= paginate @articles %>
+    </div>
 
     <% @articles.each do |article|%>
       <div class="col-lg-4 col-sm-12 mb-3">
@@ -47,7 +51,8 @@
   </div>
 
   <div class="col-12 mt-3">
-    <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %> | <%= link_to "ジャンル一覧へ", genres_path, class: "text-reset" %></p>
+    <p class="text-center"><span class="bg-white p-1"><%= link_to "Topへ", root_path, class: "text-reset" %>
+    | <%= link_to "ジャンル一覧へ", genres_path, class: "text-reset" %></span></p>
   </div>
 
 </div>

@@ -1,4 +1,7 @@
-<div class="card col-sm-5 mx-auto mt-5">
+<div class="row  justify-content-center mt-3">
+  <%= render 'shared/flash_messages' %>
+</div>
+<div class="card col-sm-5 mx-auto mt-2">
   <div class="card-body">
     <h3 class="mt-1 mb-3"><%= @genre.genre %>の新しい記事</h3>
     <%= form_with model: [@genre, @article], local: true do |f| %>

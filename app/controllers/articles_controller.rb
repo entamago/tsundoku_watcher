@@ -13,8 +13,10 @@ class ArticlesController < ApplicationController
     @genre = Genre.find(params[:genre_id])
     @article = Article.new(article_params)
     if @article.save
+      flash[:success] = "積み上げご苦労さまです！#{@genre.genre}の記事を投稿しました！"
       redirect_to genre_path(params[:genre_id])
     else
+      flash.now[:danger] = "記事が作成出来ませんでした"
       render :new
     end
   end
@@ -27,8 +29,10 @@ class ArticlesController < ApplicationController
     @genre = Genre.find(params[:genre_id])
     @article = Article.find(params[:id])
     if @article.update(article_params)
+      flash[:success] = "情報を更新更新しました！記事の編集お疲れさまです！"
       redirect_to genre_article_path(genre_id: params[:genre_id], id: params[:id])
     else
+      flash.now[:danger] = "記事が編集出来ませんでした"
       render :edit
     end 
   end
