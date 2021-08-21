@@ -1,4 +1,7 @@
-<div class="col-sm-5 mx-auto mt-5">
+<div class="row  justify-content-center mt-3">
+  <%= render 'shared/flash_messages' %>
+</div>
+<div class="col-sm-5 mx-auto mt-2">
   <div class="card border-success">
       <div class="card-header">
         <p>ジャンル：<%= link_to @article.genre.genre, genre_path(@article.genre), class: "text-reset" %></p>
@@ -24,10 +27,9 @@
           <%= link_to "編集", edit_genre_article_path(genre_id: @article.genre_id, id: @article.id), :class => "btn btn-outline-secondary" %>
         </div>
       </div>
-
   </div>
-<div>
+</div>
 <div class="mt-3 col-12">
-  <p class="text-center"><%= link_to "Topへ", root_path, :class => "text-reset" %> 
-  | <%= link_to "#{@article.genre.genre}へ", genre_path(@article.genre), class: "text-reset" %></p>
+  <p class="text-center mx-auto"><span class="p-1 bg-white"><%= link_to "Topへ", root_path, :class => "text-reset" %> 
+  | <%= link_to "#{@article.genre.genre}へ", genre_path(@article.genre), class: "text-reset" %></span></p>
 </div>
