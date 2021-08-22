@@ -19,13 +19,13 @@
       <div class="col-12 p-3 text-lg-center">
         <p class="h5"><span class="badge badge-success">Check!</span> <%= link_to "おめでとうございます！短期目標が達成されました！次の目標を立ててみましょう！", new_goal_path, class: "text-reset" %></p>
       </div>
-    <% elsif @limit <= 0 %>
+    <% elsif (@now_goal.time_limit - Date.today).to_i <= 0 %>
       <div class="col-12 p-3 text-lg-center">
         <p class="h5"><span class="badge badge-danger">Check!</span> <%= link_to "現在設定していた短期目標の期限が過ぎています。新しく目標を立て直しましょう。", new_goal_path, class: "text-danger" %></p>
       </div>
     <% else %>
       <div class="col-12">
-        <p class="lead bold text-lg-center">短期目標：<span class="text-danger"><%= @now_goal.short_tern_goal %></span>（期限は<span class="text-danger">残り<%= @limit %>日</span>）</p>
+        <p class="lead bold text-lg-center">短期目標：<span class="text-danger"><%= @now_goal.short_tern_goal %></span>（期限は<span class="text-danger">残り<%= (@now_goal.time_limit - Date.today).to_i %>日</span>）</p>
       </div>
       <div class="col-12 mb-2">
         <p class="h6 text-lg-center">本日の行動目標：<span class="text-danger"><%= @now_goal.routine %></span></p>

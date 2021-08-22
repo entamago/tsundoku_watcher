@@ -7,12 +7,12 @@
 
       <div class="form-group">
         <%= f.label :short_tern_goal, "短期目標",:class => "form-label" %><em>（未達成の場合は目標を見直しましょう）</em><br />
-        <%= f.text_field :short_tern_goal, placeholder: "50文字程度", maxlength: 50, :class => "form-controll col-12" %>
+        <%= f.text_field :short_tern_goal, placeholder: "最大50文字", maxlength: 50, :class => "form-controll col-12" %>
       </div>
 
       <div class="form-group">
         <%= f.label :routine, "行動目標", :class => "form-label" %><em>（目標を達成するために必要な行動を書き出してみましょう）</em><br />
-        <%= f.text_area :routine, placeholder: "100文字程度", rows: "2", maxlength: 100, :class => "form-controll col-12" %>
+        <%= f.text_area :routine, placeholder: "最大100文字", rows: "2", maxlength: 100, :class => "form-controll col-12" %>
       </div>
 
       <div class="form-group hidden">
@@ -20,7 +20,7 @@
         <%= f.date_field :time_limit, min: Date.current, max: (Date.current + 30), :class => "form-controll col-12 mb-3" %>
       </div>
 
-      <div class="form-group  form-check border border-success p-2">
+      <div class="form-group  form-check border border-danger p-2">
         <%= f.check_box :achievement, { class: "form-check-input ml-2" }, "true", "false" %>
         <%= f.label :achievement, "目標達成チェック", class: "form-check-label ml-4" %><em>（目標を達成できたらチェック！）</em>
       </div>

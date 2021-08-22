@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_08_21_064215) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "short_tern_goal", null: false
-    t.string "routine"
+    t.string "routine", null: false
     t.date "time_limit", null: false
     t.boolean "achievement", default: false, null: false
     t.bigint "user_id", null: false

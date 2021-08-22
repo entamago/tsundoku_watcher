@@ -12,14 +12,19 @@
         <p class="h5 text-danger">現在目標が設定されていません。新しい目標を設定しましょう。</p>
       </div>
     <% elsif @now_goal.achievement == true %>
+      <div class="col mx-3 p-2 border border-success">
+        <p class="h5 text-reset"><span class="badge badge-danger">Good!</span> おめでとうございます！目標を達成しました。新しい目標を設定しましょう。</p>
+      </div>
+    <% elsif (@now_goal.time_limit - Date.today).to_i <= 0 %>
       <div class="col mx-3 p-2 border border-danger">
-        <p class="h5 text-danger">最新の目標はすでに達成済みです。新しい目標を設定しましょう。</p>
+        <p class="h5 text-danger">最新の目標は期限を超過しています。新しい目標を設定しましょう。</p>
       </div>
     <% else %>
       <div class="col mx-3 p-2 border border-success">
         <h6>最新の目標は<%= l @now_goal.time_limit, format: :long %>までに</h6>
         <p class="h5">『<%= @now_goal.short_tern_goal %>』です。</p>
         <p>そのために<%= @now_goal.routine %></p>
+        <span class="badge badge-danger">Check!</span><em> 目標が達成できたら見直しページで達成チェックをしましょう</em>
       </div>
     <% end %>
 

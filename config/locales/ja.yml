@@ -34,3 +34,8 @@ ja:
         title: タイトル
         article: 記事内容
         reference_info: 参考・備考
+      goal:
+        short_tern_goal: 短期目標
+        routine: 行動目標
+        time_limit: 達成期限
+        achievement: 達成の成否

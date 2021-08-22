@@ -19,9 +19,10 @@ class UsersController < ApplicationController
     @user = current_user
     @articles = Article.where(user_id: @user.id).order(updated_at: :DESC)
     @genres = Genre.where(user_id: @user.id)
-    @now_goal = Goal.where(user_id: @user.id).order(created_at: :DESC).first
-    @achievements = Goal.where(user_id: @user.id, achievement: true)
-    @limit = (@now_goal.time_limit - Date.today).to_i
+    unless Genre.where(user_id: @user.id).blank?
+      @now_goal = Goal.where(user_id: @user.id).order(created_at: :DESC).first
+      @achievements = Goal.where(user_id: @user.id, achievement: true)
+    end
   end
 
   private

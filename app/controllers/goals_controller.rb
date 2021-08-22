@@ -22,10 +22,12 @@ class GoalsController < ApplicationController
 
   def edit
     @goal = Goal.find(params[:id])
+    user_check
   end
 
   def update
     @goal = Goal.find(params[:id])
+    user_check
     if @goal.update(goal_params)
       redirect_to goals_path
     else
@@ -35,6 +37,7 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal = Goal.find(params[:id])
+    user_check
     if @goal.destroy
       redirect_to goals_path
     else
@@ -45,6 +48,12 @@ class GoalsController < ApplicationController
   private
   def set_user
     @user = current_user
+  end
+
+  def user_check
+    unless @goal.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def goal_params
