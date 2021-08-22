@@ -3,19 +3,42 @@
     <div class="col-lg-3 col-sm-12">
       <h5><%= "ようこそ#{current_user.nickname}さん"%></h5>
     </div>
+    <div class="col-lg-9 col-sm-12">
+      <p class="lead text-lg-center">本日も<span class="text-danger"><%= current_user.purpose %></span>という目標に向かって行動を積み上げましょう!</p>
+    </div>
   </div>
   <div class="row m-3 py-2 border border-danger">
     <div class="col-12">
-      <h3 class="text-center"><span class="badge badge-danger">Fight!</span> 積み上げ一覧</h3>
+      <h3 class="text-center">積み上げ一覧</h3>
     </div>
-    <div class="col-12">
-      <p class="lead text-lg-center">今日も<span class="text-danger"><%= current_user.purpose %></span>という目標に向かって行動を積み上げていきましょう!</p>
+    <% if @now_goal.blank? %>
+      <div class="col-12 m-3 text-lg-center">
+        <p class="h5">現在設定している短期目標はありません。目標設定は<%= link_to "こちら", new_goal_path, class: "text-danger" %></p>
+      </div>
+    <% elsif @now_goal.achievement == true %>
+      <div class="col-12 p-3 text-lg-center">
+        <p class="h5"><span class="badge badge-success">Check!</span> <%= link_to "おめでとうございます！短期目標が達成されました！次の目標を立ててみましょう！", new_goal_path, class: "text-reset" %></p>
+      </div>
+    <% elsif @limit <= 0 %>
+      <div class="col-12 p-3 text-lg-center">
+        <p class="h5"><span class="badge badge-danger">Check!</span> <%= link_to "現在設定していた短期目標の期限が過ぎています。新しく目標を立て直しましょう。", new_goal_path, class: "text-danger" %></p>
+      </div>
+    <% else %>
+      <div class="col-12">
+        <p class="lead bold text-lg-center">短期目標：<span class="text-danger"><%= @now_goal.short_tern_goal %></span>（期限は<span class="text-danger">残り<%= @limit %>日</span>）</p>
+      </div>
+      <div class="col-12 mb-2">
+        <p class="h6 text-lg-center">本日の行動目標：<span class="text-danger"><%= @now_goal.routine %></span></p>
+      </div>
+    <% end %>
+    <div class="col-lg-4 col-sm-12 text-center">
+      <h4>総合作成記事数は<span class="text-danger"><%= @articles.count %></span>件</h4>
     </div>
-    <div class="col-lg-6 col-sm-12 text-center">
-      <h4>総合作成記事数は<span class="text-danger"><%= @articles.count %></span>件！</h4>
+    <div class="col-lg-4 col-sm-12 text-center">
+      <h4>作成ジャンルは<span class="text-danger"><%= @genres.count %></span>件</h4>
     </div>
-    <div class="col-lg-6 col-sm-12 text-center">
-      <h4>作成ジャンルは<span class="text-danger"><%= @genres.count %></span>件！</h4>
+    <div class="col-lg-4 col-sm-12 text-center">
+      <h4>達成目標数は<span class="text-danger"><%= @achievements.count %></span>件</h4>
     </div>
   </div>
 

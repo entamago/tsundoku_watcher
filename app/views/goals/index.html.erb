@@ -18,15 +18,17 @@
     <% else %>
       <div class="col mx-3 p-2 border border-success">
         <h6>最新の目標は<%= l @now_goal.time_limit, format: :long %>までに</h6>
-        <p class="h5"><%= @now_goal.short_tern_goal %></p>
+        <p class="h5">『<%= @now_goal.short_tern_goal %>』です。</p>
         <p>そのために<%= @now_goal.routine %></p>
       </div>
     <% end %>
 
     <% unless @goals.blank? %>
-      <div class="col-12 my-3">
-        <h5><%= link_to "目標の見直し", edit_goal_path(@now_goal.id), class: "btn btn-outline-dark btn-block" %>
-      </div>
+      <% if (@now_goal.time_limit - Date.today).to_i >= 0 %>
+        <div class="col-12 my-3">
+          <h5><%= link_to "目標の見直し", edit_goal_path(@now_goal.id), class: "btn btn-outline-dark btn-block" %>
+        </div>
+      <% end %>
       <table class="mt-3 table table-hover">
         <thead>
           <tr>
@@ -43,7 +45,9 @@
                   <span class="badge badge-success">達成済み！</span>
                 <% end %>
                 <%= goal.short_tern_goal %>
-                <%=link_to " [削除]", "#", class: "text-reset" %>
+                <%=link_to " [削除]", goal_path(goal.id), method: :delete, data: {
+                  confirm: "目標を削除します。よろしいですか？"
+                }, class: "text-reset" %>
                 </p>
               </td>
             </tr>
