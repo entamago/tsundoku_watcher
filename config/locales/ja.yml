@@ -9,6 +9,19 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d　%H時%M分"
+  date:
+    abbr_day_names:
+    - 日
+    - 月
+    - 火
+    - 水
+    - 木
+    - 金
+    - 土
+    formats:
+      default: "%Y/%m/%d"
+      short: "%m/%d"
+      long: "%Y年%m月%d日(%a)"
   activerecord:
     attributes:
       user:

@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   has_many :genres
   has_many :articles
+  has_many :gorls
 end
