@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
   before_action :set_user
 
   def index
-    @goals = Goal.where(user_id: @user.id).order(created_at: :DESC)
+    @goals = Goal.where(user_id: @user.id).order(created_at: :DESC).page(params[:page]).per(10)
     @now_goal = @goals.first
   end
 
