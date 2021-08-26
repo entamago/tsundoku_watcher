@@ -56,9 +56,16 @@ SNSのように相互のコミュニケーションをとるのではなく、AP
 
 
 ## データベース設計
-
+![ERD](https://user-images.githubusercontent.com/81839879/130967653-960f4fd2-cbef-40b3-8b5e-0b642315ee40.png)
 
 ## ローカルでの動作方法
-
+ローカル環境での動作までに必要なコマンドは以下のとおり
+1. git clone <リモートリポジトリのURL>
+2. cd アプリケーションのディレクトリ
+3. bundle install
+4. yarn install
+5. rails db:create
+6. rails db:migrate
+7. rails s
 
 
