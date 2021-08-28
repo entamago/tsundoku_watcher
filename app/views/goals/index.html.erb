@@ -22,7 +22,7 @@
     <% else %>
       <div class="col mx-3 p-2 border border-success">
         <h6>最新の目標は<%= l @now_goal.time_limit, format: :long %>までに</h6>
-        <p class="h5">『<%= @now_goal.short_tern_goal %>』です。</p>
+        <p class="h5 bold">『<%= @now_goal.short_tern_goal %>』です。</p>
         <p>そのために<%= @now_goal.routine %></p>
         <span class="badge badge-danger">Check!</span><em> 目標が達成できたら見直しページで達成チェックをしましょう</em>
       </div>
@@ -38,7 +38,7 @@
         <thead>
           <tr>
             <th scope="col">＃</th>
-            <th scope="col">今までの短期目標一覧</th>
+            <th scope="col">今までの短期目標</th>
           </tr>
         </thead>
         <tbody>
@@ -61,8 +61,9 @@
       </table>
       <div class="col-12 d-flex justify-content-center">
       <%= paginate @goals %>
-    </div>
     <% end %>
+  </div>
+
 
     <div class="col-12 mt-3">
       <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %></p>
