@@ -1,0 +1,72 @@
+<div class="container bg-white p-3 mt-4">
+  <div class="row" >
+    <div class="col h5">
+      <i class="fas fa-map-marked-alt" aria-hidden="true"></i> <%= "#{@user.nickname}さんの目標管理" %>
+    </div>
+    <div class="col-12 my-3">
+      <h5><%= link_to "新しい目標を設定する", new_goal_path, class: "btn btn-outline-success btn-block" %>
+    </div>
+
+    <% if @goals.blank? %>
+      <div class="col mx-3 p-2 border border-danger">
+        <p class="h5 text-danger">現在目標が設定されていません。新しい目標を設定しましょう。</p>
+      </div>
+    <% elsif @now_goal.achievement == true %>
+      <div class="col mx-3 p-2 border border-success">
+        <p class="h5 text-reset"><span class="badge badge-danger">Good!</span> 目標を達成しました。新しい目標を設定しましょう。</p>
+      </div>
+    <% elsif (@now_goal.time_limit - Date.today).to_i <= 0 %>
+      <div class="col mx-3 p-2 border border-danger">
+        <p class="h5 text-danger">目標は期限を超過しています。新しい目標を設定しましょう。</p>
+      </div>
+    <% else %>
+      <div class="col mx-3 p-2 border border-success">
+        <h6>最新の目標は<%= l @now_goal.time_limit, format: :long %>までに</h6>
+        <p class="h5 bold">『<%= @now_goal.short_tern_goal %>』です。</p>
+        <p>そのために<%= @now_goal.routine %></p>
+        <span class="badge badge-danger">Check!</span><em> 目標が達成できたら見直しページで達成チェックをしましょう</em>
+      </div>
+    <% end %>
+
+    <% unless @goals.blank? %>
+      <% if (@now_goal.time_limit - Date.today).to_i >= 0 %>
+        <div class="col-12 my-3">
+          <h5><%= link_to "目標の見直し", edit_goal_path(@now_goal.id), class: "btn btn-outline-dark btn-block" %>
+        </div>
+      <% end %>
+      <table class="mt-3 table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">＃</th>
+            <th scope="col">今までの短期目標</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @goals.each_with_index do |goal, i| %>
+            <tr>
+              <th scope="row"><%= i + 1 %></th>
+              <td><p class="h6">
+                <% if goal.achievement == true %>
+                  <span class="badge badge-success">達成済み！</span>
+                <% end %>
+                <%= goal.short_tern_goal %>
+                <%=link_to " [削除]", goal_path(goal.id), method: :delete, data: {
+                  confirm: "目標を削除します。よろしいですか？"
+                }, class: "text-reset" %>
+                </p>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="col-12 d-flex justify-content-center">
+      <%= paginate @goals %>
+    <% end %>
+  </div>
+
+
+    <div class="col-12 mt-3">
+      <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %></p>
+    </div>
+  </div>
+</div>

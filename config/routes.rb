@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update]
   get 'search' => 'articles#search'
+  resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
 
   root to: 'users#show'
 end

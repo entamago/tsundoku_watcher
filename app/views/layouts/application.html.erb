@@ -17,6 +17,10 @@
         height: 50px;
       }
 
+      .hidden{
+        display: none;
+      }
+
       .pagination>li>a {
         border: none;
         color: #28a745;
@@ -45,6 +49,9 @@
         background-size: cover;
         height: 100%;
       }
+
+      .bold{ font-weight: bold;}
+      
     </style>
 
   </head>
@@ -68,8 +75,8 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to new_genre_path, class: "nav-link" do %>
-          <i class="fas fa-book-medical" aria-hidden="true"></i> ジャンル追加
+        <%= link_to goals_path, class: "nav-link" do %>
+          <i class="fas fa-map-marked-alt" aria-hidden="true"></i> 目標管理
         <% end %>
       </li>
       <li class="nav-item">

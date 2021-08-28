@@ -24,6 +24,9 @@
         <% end %>
       </tbody>
     </table>
+    <div class="col-12 d-flex justify-content-center">
+      <%= paginate @genres %>
+    </div>
     <div class="col-12">
       <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %></p>
     </div>

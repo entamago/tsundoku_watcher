@@ -15,9 +15,14 @@ class UsersController < ApplicationController
   end
   
   def show
+    flash.clear
     @user = current_user
     @articles = Article.where(user_id: @user.id).order(updated_at: :DESC)
     @genres = Genre.where(user_id: @user.id)
+    unless Genre.where(user_id: @user.id).blank?
+      @now_goal = Goal.where(user_id: @user.id).order(created_at: :DESC).first
+      @achievements = Goal.where(user_id: @user.id, achievement: true)
+    end
   end
 
   private

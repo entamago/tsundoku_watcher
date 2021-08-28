@@ -8,6 +8,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../article-count")
+require("../achieve-check")
 
 import 'bootstrap'
 import '@fortawesome/fontawesome-free/js/all'

@@ -1,0 +1,37 @@
+<div class="card col-sm-5 mx-auto mt-5">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3">短期目標の見直し</h3>
+    <%= form_with model: @goal, local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <%= f.label :short_tern_goal, "短期目標",:class => "form-label" %><em>（未達成の場合は目標を見直しましょう）</em><br />
+        <%= f.text_field :short_tern_goal, placeholder: "最大50文字", maxlength: 50, :class => "form-controll col-12" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :routine, "行動目標", :class => "form-label" %><em>（目標を達成するために必要な行動を書き出してみましょう）</em><br />
+        <%= f.text_area :routine, placeholder: "最大100文字", rows: "2", maxlength: 100, :class => "form-controll col-12" %>
+      </div>
+
+      <div class="form-group hidden">
+        <%= f.label :time_limit, "タイムリミット", :class => "form-label" %><em>（いつまでに達成しますか？※最大30日後）</em><br />
+        <%= f.date_field :time_limit, min: Date.current, max: (Date.current + 30), :class => "form-controll col-12 mb-3" %>
+      </div>
+
+      <div id="change-bc" class="form-group  form-check p-2" style="border: 1px solid red" >
+        <%= f.check_box :achievement, { class: "form-check-input ml-2", id: "a-check" }, "true", "false" %>
+        <%= f.label :achievement, "目標達成チェック", class: "form-check-label ml-4", for: "a-check" %><em id="a-change">（目標を達成できたらチェック！）</em>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "見直し完了！", :class => "btn btn-outline-success btn-block" %>
+      </div>
+      
+    <% end %>
+  </div>
+  <div class="col-12 mt-3">
+    <p class="text-center"><%= link_to "Topへ", root_path, class: "text-reset" %>｜<%= link_to "戻る", goals_path, class: "text-reset" %></p>
+  </div>
+</div>
