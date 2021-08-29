@@ -71,4 +71,6 @@ SNSのように相互のコミュニケーションをとるのではなく、AP
 6. rails db:migrate
 7. rails s
 
-
+開発環境  
+Ruby 2.6.5  
+Rails 6.0.0
