@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @genre = Genre.find(params[:genre_id])
     @article = Article.find(params[:id])
     if @article.update(article_params)
-      flash[:success] = "情報を更新更新しました！記事の編集お疲れさまです！"
+      flash[:success] = "情報を更新しました！記事の編集お疲れさまです！"
       redirect_to genre_article_path(genre_id: params[:genre_id], id: params[:id])
     else
       flash.now[:danger] = "記事が編集出来ませんでした"
