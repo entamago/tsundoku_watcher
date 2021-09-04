@@ -12,8 +12,9 @@ SNS機能を排除して参考にしたURL以外には遷移しないので、�
 https://tsundokuwatcher.herokuapp.com/
 
 ## テスト用アカウント
-Eメール：test@test.com  
-パスワード：test1test1
+Eメール：testtest@test.com  
+パスワード：test123  
+※テストアカウント用の簡単ログイン機能が付いています
 
 
 ## 利用方法
@@ -41,16 +42,16 @@ Eメール：test@test.com
 
 ## 実装した機能についての説明
 ### ユーザー管理機能
-新規ユーザー登録、ログインとログアウトができる
+新規ユーザー登録、ログインとログアウトができる  
 [![Image from Gyazo](https://i.gyazo.com/1283df4cf7e369fe1905f6a6e780f4ea.gif)](https://gyazo.com/1283df4cf7e369fe1905f6a6e780f4ea)
 
 ### 学習ジャンル機能
-学習するジャンルとその説明を追加・編集・削除ができる
+学習するジャンルとその説明を追加・編集・削除ができる  
 [![Image from Gyazo](https://i.gyazo.com/409926ed19f3970b43f7f7eab8770073.gif)](https://gyazo.com/409926ed19f3970b43f7f7eab8770073)
 [![Image from Gyazo](https://i.gyazo.com/7fc159dfbaea79db2e10789a883a62c2.gif)](https://gyazo.com/7fc159dfbaea79db2e10789a883a62c2)
 ### 学習記事機能
-学習した内容を200文字で要約して記事として投稿できる。
-投稿した記事は編集・削除ができる。特徴として参考・備考欄にWebサイトのURLを記載すると自動でリンク化される。記事の入力可能文字数はカウントされ、リアルタイムで投稿可能かどうかを判定して表示する。
+学習した内容を200文字で要約して記事として投稿できる。  
+投稿した記事は編集・削除ができる。特徴として参考・備考欄にWebサイトのURLを記載すると自動でリンク化される。記事の入力可能文字数はカウントされ、リアルタイムで投稿可能かどうかを判定して表示する。  
 [![Image from Gyazo](https://i.gyazo.com/b80f97e6e1c718381dcb0d492b0a95d7.gif)](https://gyazo.com/b80f97e6e1c718381dcb0d492b0a95d7)  
 [![Image from Gyazo](https://i.gyazo.com/1e1755f8370ccec9ec8dc7ab55480705.gif)](https://gyazo.com/1e1755f8370ccec9ec8dc7ab55480705)  
 
@@ -58,16 +59,16 @@ Eメール：test@test.com
 [![Image from Gyazo](https://i.gyazo.com/573d511bdd6532e27a34efaf6d47a66e.gif)](https://gyazo.com/573d511bdd6532e27a34efaf6d47a66e)
 
 ### 記事検索機能
-学習した記事はナビバーにある検索機能を使用してすぐに探すことができる。検索したキーワードがヒットした記事はジャンルに関係なく表示される。また検索のキーワードを入れずに検索すると作成した記事がジャンル関係なく表示される。特徴として見やすいように記事一覧の上下にページネーションを表示している。
+学習した記事はナビバーにある検索機能を使用してすぐに探すことができる。検索したキーワードがヒットした記事はジャンルに関係なく表示される。また検索のキーワードを入れずに検索すると作成した記事がジャンル関係なく表示される。特徴として見やすいように記事一覧の上下にページネーションを表示している。  
 [![Image from Gyazo](https://i.gyazo.com/fcb845bfe20caf5e877a63689e1f6432.gif)](https://gyazo.com/fcb845bfe20caf5e877a63689e1f6432)  
 
 ### 目標管理機能
 学習する上で学習の目的や方向性を見失わないように、短期目標を言語化して表示しておく機能。  
 [![Image from Gyazo](https://i.gyazo.com/af9c96bb2035d8ded385a62ca5133012.gif)](https://gyazo.com/af9c96bb2035d8ded385a62ca5133012)  
-短期目標には30日以内で期限を設定する必要があり、いつまでに行うかを決めることでダラダラと学習しないよう促す。期限が切れると目標の見直しを促される。
+短期目標には30日以内で期限を設定する必要があり、いつまでに行うかを決めることでダラダラと学習しないよう促す。期限が切れると目標の見直しを促される。  
 [![Image from Gyazo](https://i.gyazo.com/5f715ad0e624456364eb77af395753e9.gif)](https://gyazo.com/5f715ad0e624456364eb77af395753e9)
 
-見直しページでは期限内であれば目標の見直しができるが、期限の見直しはできない。達成した目標は達成チェックボックスにチェックを入れる。
+見直しページでは期限内であれば目標の見直しができるが、期限の見直しはできない。達成した目標は達成チェックボックスにチェックを入れる。  
 [![Image from Gyazo](https://i.gyazo.com/5549675c7d128725faae134e2a85fd9d.gif)](https://gyazo.com/5549675c7d128725faae134e2a85fd9d)  
 達成された目標は再編集できず、一覧に達成済みのバッジがつく。  
 
@@ -77,7 +78,7 @@ SNSのように相互のコミュニケーションをとるのではなく、AP
 
 
 ## データベース設計
-![ERD](https://user-images.githubusercontent.com/81839879/130967653-960f4fd2-cbef-40b3-8b5e-0b642315ee40.png)
+![TW-ERD](https://user-images.githubusercontent.com/81839879/132077742-628b0bc0-dce3-4528-a0a0-87aceb39acdf.png)
 
 ## ローカルでの動作方法
 ローカル環境での動作までに必要なコマンドは以下のとおり
