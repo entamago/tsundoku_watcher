@@ -12,4 +12,10 @@ class User < ApplicationRecord
   has_many :genres
   has_many :articles
   has_many :gorls
+
+  def self.guest
+    find_or_create_by(email: "testtest@test.com") do |user|
+      user.password = "test123"
+    end
+  end
 end
