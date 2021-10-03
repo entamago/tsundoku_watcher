@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to root_path
     else
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
   
   def show
     flash.clear
-    @user = current_user
     @articles = Article.where(user_id: @user.id).order(updated_at: :DESC)
     @genres = Genre.where(user_id: @user.id)
     @now_goal = Goal.where(user_id: @user.id).order(created_at: :DESC).first
@@ -24,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   private
+  def set_user
+    @user = current_user
+  end
+
   def user_params
     params.require(:user).permit(:nickname, :email, :purpose)
   end
